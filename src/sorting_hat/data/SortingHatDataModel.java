@@ -480,6 +480,8 @@ public class SortingHatDataModel extends MiniGameDataModel
     {
         return properTransactionOrder.get(transactionCounter);
     }
+    
+    
 
     /**
      * Swaps the tiles at the two indices.

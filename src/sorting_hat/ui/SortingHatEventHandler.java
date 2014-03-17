@@ -107,5 +107,20 @@ public class SortingHatEventHandler
                 }
             }
         }
+        
+         if (keyCode == KeyEvent.VK_C)
+        {            
+            // ONLY DO THIS IF THE GAME IS NO OVER
+            if (data.inProgress())
+            {
+                // FIND A MOVE IF THERE IS ONE
+                SortTransaction move = data.getNextSwapTransaction();
+                if (move != null)
+                {
+                    data.swapTiles(move.getFromIndex(), move.getToIndex());
+                    game.getAudio().play(TheSortingHat.SortingHatPropertyType.AUDIO_CUE_CHEAT.toString(), false);
+                }
+            }
+        }
     }
 }
