@@ -72,7 +72,19 @@ public class SortingHatDataModel extends MiniGameDataModel
     // THE PROPER TRANSACTIONS TO USE FOR COMPARISION AGAINST PLAYER MOVES
     private ArrayList<SortTransaction> properTransactionOrder;
     private int transactionCounter;
-
+    private int undoCounter;
+    
+    
+    
+    public int getTransactionCounter(){
+        return transactionCounter;
+    }
+    
+    public void decrementTransactionCounter(){
+        if(transactionCounter > 0)
+        transactionCounter--;
+       
+    }
     /**
      * Constructor for initializing this data model, it will create the data
      * structures for storing tiles, but not the tile grid itself, that is
@@ -479,6 +491,14 @@ public class SortingHatDataModel extends MiniGameDataModel
     public SortTransaction getNextSwapTransaction()
     {
         return properTransactionOrder.get(transactionCounter);
+    }
+    
+    public SortTransaction getPreviousSwapTransaction(){
+       if(transactionCounter == 0)
+           return null;
+       else
+           return properTransactionOrder.get(transactionCounter - 1);
+        
     }
     
     

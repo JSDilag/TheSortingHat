@@ -53,6 +53,34 @@ public class SortingHatEventHandler
         // RESET THE GAME AND ITS DATA
         game.reset();        
     }
+    
+    public void respondToBackRequest()
+    {
+        
+        if (game.getDataModel().inProgress())
+        {
+            game.getDataModel().endGameAsLoss();
+        }
+       
+        game.switchToSplashScreen();        
+    }
+    
+    
+    public void respondToUndoRequest()
+    {
+         SortingHatDataModel data = (SortingHatDataModel)game.getDataModel(); 
+        
+         data.decrementTransactionCounter();
+         SortTransaction move = data.getPreviousSwapTransaction();
+
+         
+                if (move != null)
+                {
+                    data.swapTiles(move.getFromIndex(), move.getToIndex());
+                    data.decrementTransactionCounter();
+                    game.getAudio().play(TheSortingHat.SortingHatPropertyType.AUDIO_CUE_UNDO.toString(), false);
+                }      
+    }
 
     /**
      * Called when the user clicks a button to select a level.
@@ -108,17 +136,19 @@ public class SortingHatEventHandler
             }
         }
         
-         if (keyCode == KeyEvent.VK_C)
+         if (keyCode == KeyEvent.VK_U)
         {            
             // ONLY DO THIS IF THE GAME IS NO OVER
             if (data.inProgress())
             {
-                // FIND A MOVE IF THERE IS ONE
-                SortTransaction move = data.getNextSwapTransaction();
+                
+                SortTransaction move = data.getPreviousSwapTransaction();
+                data.decrementTransactionCounter();
                 if (move != null)
                 {
                     data.swapTiles(move.getFromIndex(), move.getToIndex());
-                    game.getAudio().play(TheSortingHat.SortingHatPropertyType.AUDIO_CUE_CHEAT.toString(), false);
+                    data.decrementTransactionCounter();
+                    game.getAudio().play(TheSortingHat.SortingHatPropertyType.AUDIO_CUE_UNDO.toString(), false);
                 }
             }
         }
