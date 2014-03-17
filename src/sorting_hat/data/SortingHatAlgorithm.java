@@ -30,5 +30,7 @@ public abstract class SortingHatAlgorithm
      * This will generate a list of the proper sorting transactions, where
      * each subclass will do so according to its own algorithm.
      */
+    
+    
     public abstract ArrayList<SortTransaction> generateSortTransactions();
 }

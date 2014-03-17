@@ -28,6 +28,7 @@ public class SortingHatAlgorithmFactory
         {
             premadeSortingHatAlgorithms = new HashMap();
             premadeSortingHatAlgorithms.put(SortingHatAlgorithmType.BUBBLE_SORT,    new BubbleSortAlgorithm(initDataToSort,        algorithmType.toString()));
+            premadeSortingHatAlgorithms.put(SortingHatAlgorithmType.SELECTION_SORT,    new SelectionSortAlgorithm(initDataToSort,        algorithmType.toString()));
         }
         // RETURN THE REQUESTED ONE
         return premadeSortingHatAlgorithms.get(algorithmType);
@@ -88,43 +89,38 @@ class BubbleSortAlgorithm extends SortingHatAlgorithm
 
 class SelectionSortAlgorithm extends SortingHatAlgorithm
 {
-    /**
-     * Constructor only needs to init the inherited stuff.
-     */
+    
     public SelectionSortAlgorithm(ArrayList<SortingHatTile> initDataToSort, String initName)
     {
-        // INVOKE THE PARENT CONSTRUCTOR
+        
         super(initDataToSort, initName);
     }
     
-    /**
-     * Build and return all the transactions necessary to sort using bubble sort.
-     */
+    
     public ArrayList<SortTransaction> generateSortTransactions()
     {
-        // HERE'S THE LIST OF TRANSACTIONS
+        
         ArrayList<SortTransaction> transactions = new ArrayList();
         
-        // FIRST LET'S COPY THE DATA TO A TEMPORARY ArrayList
+        
         ArrayList<SortingHatTile> copy = new ArrayList();
         for (int i = 0; i < dataToSort.size(); i++)
             copy.add(dataToSort.get(i));
 
-        // NOW SORT THE TEMPORARY DATA STRUCTURE
+        
         for (int i = 0; i < dataToSort.size(); i++)
         {
             int min = i;
             for (int j = i+1; j < dataToSort.size(); j++)
             {
                 
-                if (copy.get(j).getID() < copy.get(i).getID())
+                if (copy.get(j).getID() < copy.get(min).getID())
                     min = j;
-                    //SortTransaction sT = new SortTransaction(j, j+1);
-                    //transactions.add(sT);
+                    
             }       
-                    // SWAP
+                   
             if(min != i){
-                SortTransaction sT = new SortTransaction(i, min);
+                SortTransaction sT = new SortTransaction(min, i);
                 transactions.add(sT);
                 
                 SortingHatTile temp = copy.get(i);
