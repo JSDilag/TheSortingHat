@@ -186,7 +186,7 @@ public class SortingHatMiniGame extends MiniGame
     public void switchToSplashScreen()
     {
         
-        //dataModel.endGameAsLoss();
+        
         
         // CHANGE THE BACKGROUND
         guiDecor.get(BACKGROUND_TYPE).setState(MENU_SCREEN_STATE);
@@ -224,6 +224,7 @@ public class SortingHatMiniGame extends MiniGame
         // MAKE THE CURRENT SCREEN THE MENU SCREEN
         currentScreenState = MENU_SCREEN_STATE;
         
+        //dataModel.endGameAsLoss();
         // AND UPDATE THE DATA GAME STATE
         data.setGameState(MiniGameState.NOT_STARTED);
         
@@ -436,7 +437,7 @@ public class SortingHatMiniGame extends MiniGame
         // AND THE TILE STACK
         String tileStack = props.getProperty(SortingHatPropertyType.IMAGE_BUTTON_TEMP_TILE);
         sT = new SpriteType(ALGORITHM_TYPE);
-        img = loadImageWithColorKey(imgPath + tileStack, COLOR_KEY);
+        img = loadImageWithColorKey(imgPath + tileStack, COLOR_ALGORITHM_HEADER);
         sT.addState(SortingHatTileState.VISIBLE_STATE.toString(), img);
         s = new Sprite(sT, TEMP_TILE_X, TEMP_TILE_Y, 0, 0, SortingHatTileState.INVISIBLE_STATE.toString());
         guiDecor.put(ALGORITHM_TYPE, s);

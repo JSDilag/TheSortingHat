@@ -114,6 +114,22 @@ public class SortingHatDataModel extends MiniGameDataModel
         return snake;
     }
 
+    public SortingHatAlgorithm getSortingAlgorithm(){
+        return sortingAlgorithm;
+    }
+    
+    public String getSortingAlgorithmName(){
+        if(sortingAlgorithmName.equals("SELECTION_SORT"))
+            return "Selection Sort";
+        else
+            return "Bubble Sort";
+        
+    }
+    
+    private String sortingAlgorithmName;
+    
+    
+    
     public int getBadSpellsCounter()
     {
         return badSpellsCounter;
@@ -183,7 +199,7 @@ public class SortingHatDataModel extends MiniGameDataModel
         // KEEP THE TILE ORDER AND SORTING ALGORITHM FOR LATER
         snake = initSnake;
         sortingAlgorithm = initSortingAlgorithm;
-
+        sortingAlgorithmName = initSortingAlgorithm.name;
         // UPDATE THE VIEWPORT IF WE ARE SCROLLING (WHICH WE'RE NOT)
         viewport.updateViewportBoundaries();
 
@@ -669,12 +685,18 @@ public class SortingHatDataModel extends MiniGameDataModel
     {
         // UPDATE THE GAME STATE USING THE INHERITED FUNCTIONALITY
         super.endGameAsWin();
-
+        
+        
         // RECORD THE TIME IT TOOK TO COMPLETE THE GAME
         long gameTime = endTime.getTimeInMillis() - startTime.getTimeInMillis();
 
         // RECORD IT AS A WIN
-        ((SortingHatMiniGame) miniGame).getPlayerRecord().addWin(currentLevel);
+        if(badSpellsCounter == 0){
+            ((SortingHatMiniGame) miniGame).getPlayerRecord().addPerfectWin(currentLevel);
+            ((SortingHatMiniGame) miniGame).getPlayerRecord().setFastestPerfectWin(currentLevel, gameTime);
+        }
+        else
+            ((SortingHatMiniGame) miniGame).getPlayerRecord().addWin(currentLevel);
 
         // SAVE PLAYER DATA
         ((SortingHatMiniGame) miniGame).savePlayerRecord();

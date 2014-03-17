@@ -95,6 +95,27 @@ public class SortingHatRecord
             return rec.wins; 
     }
     
+    public int getPerfectWins(String levelName){
+        SortingHatLevelRecord rec = levelRecords.get(levelName);
+              
+        if (rec == null)
+            return 0;
+        // OTHERWISE RETURN THE WINS
+        else
+            return rec.perfectWins; 
+    }
+    
+    public long getFastestPerfectWin(String levelName){
+        SortingHatLevelRecord rec = levelRecords.get(levelName);
+              
+        if (rec == null)
+            return 0;
+        
+        else
+            return rec.fastestPerfectWin;
+        
+    }
+    
     /**
      * Returns true if there is already a level called levelName, false
      * otherwise.
@@ -167,6 +188,25 @@ public class SortingHatRecord
         // UPDATE THE STATS
         rec.gamesPlayed++;
         rec.wins++;
+    }
+    
+    public void addPerfectWin(String levelName){
+        
+        SortingHatLevelRecord rec = levelRecords.get(levelName);
+        
+        
+        rec.gamesPlayed++;
+        rec.perfectWins++;
+    }
+    
+    public void setFastestPerfectWin(String levelName, long gameTime){
+        SortingHatLevelRecord rec = levelRecords.get(levelName);
+        if(rec.fastestPerfectWin == 0){
+            rec.fastestPerfectWin = gameTime;
+        }
+        else if(gameTime < rec.fastestPerfectWin){
+            rec.fastestPerfectWin = gameTime;
+        }
     }
     
     // ADDITIONAL SERVICE METHODS

@@ -16,7 +16,10 @@ public abstract class SortingHatAlgorithm
     
     // THE NAME OF THE ALGORITHM
     protected String name;
-
+    
+    public String getName(){
+        return name;
+    }
     /**
      * Constructor that sets up both instance variables.
      */

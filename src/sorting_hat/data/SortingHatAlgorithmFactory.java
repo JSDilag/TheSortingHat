@@ -27,8 +27,8 @@ public class SortingHatAlgorithmFactory
         if (premadeSortingHatAlgorithms == null)
         {
             premadeSortingHatAlgorithms = new HashMap();
-            premadeSortingHatAlgorithms.put(SortingHatAlgorithmType.BUBBLE_SORT,    new BubbleSortAlgorithm(initDataToSort,        algorithmType.toString()));
-            premadeSortingHatAlgorithms.put(SortingHatAlgorithmType.SELECTION_SORT,    new SelectionSortAlgorithm(initDataToSort,        algorithmType.toString()));
+            premadeSortingHatAlgorithms.put(SortingHatAlgorithmType.BUBBLE_SORT,    new BubbleSortAlgorithm(initDataToSort, "BUBBLE_SORT"));
+            premadeSortingHatAlgorithms.put(SortingHatAlgorithmType.SELECTION_SORT,    new SelectionSortAlgorithm(initDataToSort, "SELECTION_SORT"));
         }
         // RETURN THE REQUESTED ONE
         return premadeSortingHatAlgorithms.get(algorithmType);

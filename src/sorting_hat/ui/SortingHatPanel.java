@@ -33,7 +33,7 @@ public class SortingHatPanel extends JPanel
     
     // AND HERE IS ALL THE GAME DATA THAT WE NEED TO RENDER
     private SortingHatDataModel data;
-    
+    private SortingHatMiniGame miniGame;
     // WE'LL USE THIS TO FORMAT SOME TEXT FOR DISPLAY PURPOSES
     private NumberFormat numberFormatter;
  
@@ -248,6 +248,14 @@ public class SortingHatPanel extends JPanel
             int miscasts = data.getBadSpellsCounter();
             String miscastsstring = Integer.toString(miscasts);
             g.drawString(miscastsstring, TILE_COUNT_X + TILE_COUNT_OFFSET, TILE_COUNT_Y + TILE_TEXT_OFFSET);
+            
+            
+            g.setFont(FONT_TEXT_ALGORITHMTYPE);
+            g.setColor(Color.WHITE);
+            
+            String algName = data.getSortingAlgorithmName();
+            g.drawString(algName, TEMP_TILE_X + TEMP_TILE_OFFSET_X,TEMP_TILE_Y + TEMP_TILE_OFFSET2);
+            
         }        
         
         // IF THE STATS DIALOG IS VISIBLE, ADD THE TEXTUAL STATS
@@ -264,13 +272,21 @@ public class SortingHatPanel extends JPanel
             String algorithm = record.getAlgorithm(currentLevel);
             int games = record.getGamesPlayed(currentLevel);
             int wins = record.getWins(currentLevel);
-
+            long perfectWins = record.getPerfectWins(currentLevel);
+            long fastestPerfectWin =  record.getFastestPerfectWin(currentLevel);
+            long fpwseconds = fastestPerfectWin /1000;
+            long fpwhours = fpwseconds/3600;
+            long fpwminutes = (fpwseconds % 3600)/60;
+            long fpwsecondsclock = fpwseconds % 60;
+            String clock = String.format("%02d:%02d:%02d", fpwhours,fpwminutes,fpwsecondsclock);
+            
             // GET ALL THE STATS PROMPTS
             PropertiesManager props = PropertiesManager.getPropertiesManager();            
             String algorithmPrompt = props.getProperty(SortingHatPropertyType.TEXT_LABEL_STATS_ALGORITHM);
             String gamesPrompt = props.getProperty(SortingHatPropertyType.TEXT_LABEL_STATS_GAMES);
             String winsPrompt = props.getProperty(SortingHatPropertyType.TEXT_LABEL_STATS_WINS);
-
+            String perfectWinsPrompt = props.getProperty(SortingHatPropertyType.TEXT_LABEL_STATS_PERFECT_WINS);
+            String fastestPerfectWinPrompt = props.getProperty(SortingHatPropertyType.TEXT_LABEL_STATS_FASTEST_PERFECT_WIN);
             // NOW DRAW ALL THE STATS WITH THEIR LABELS
             int dot = levelName.indexOf(".");
             levelName = levelName.substring(0, dot);
@@ -278,8 +294,10 @@ public class SortingHatPanel extends JPanel
             g.drawString(algorithmPrompt + algorithm,                   STATS_LEVEL_X, STATS_ALGORITHM_Y);
             g.drawString(gamesPrompt + games,                           STATS_LEVEL_X, STATS_GAMES_Y);
             g.drawString(winsPrompt + wins,                             STATS_LEVEL_X, STATS_WINS_Y);
+            g.drawString(perfectWinsPrompt + perfectWins,               STATS_LEVEL_X, STATS_PERFECT_WINS_Y);
+            g.drawString(fastestPerfectWinPrompt + clock,               STATS_LEVEL_X, STATS_FASTEST_PERFECT_WIN_Y);
         }
-    }
+    }//fpwhours+":"+fpwminutes+":"+fpwseconds
         
     /**
      * Renders all the game tiles, doing so carefully such

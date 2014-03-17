@@ -95,8 +95,8 @@ public class SortingHatConstants
     public static final int TEMP_TILE_X = UNDO_X + 130 + CONTROLS_MARGIN;
     public static final int TEMP_TILE_Y = 0;
     public static final int TEMP_TILE_OFFSET_X = 30;
-    public static final int TEMP_TILE_OFFSET_Y = 12;
-    public static final int TEMP_TILE_OFFSET2 = 105;
+    public static final int TEMP_TILE_OFFSET_Y = 18;
+    public static final int TEMP_TILE_OFFSET2 = 47;
     
     // STATS DIALOG COORDINATES
     public static final int STATS_LEVEL_INC_Y = 30;
@@ -131,4 +131,5 @@ public class SortingHatConstants
     public static final Font FONT_TEXT_DISPLAY = new Font(Font.SANS_SERIF, Font.BOLD, 48);
     public static final Font FONT_DEBUG_TEXT = new Font(Font.MONOSPACED, Font.BOLD, 14);
     public static final Font FONT_STATS = new Font(Font.MONOSPACED, Font.BOLD, 20);
+    public static final Font FONT_TEXT_ALGORITHMTYPE = new Font(Font.SANS_SERIF, Font.PLAIN, 22);
 }
