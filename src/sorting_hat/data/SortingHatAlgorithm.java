@@ -7,7 +7,7 @@ import sorting_hat.ui.SortingHatTile;
  * This class provides the framework for the algorithms
  * we may choose to use for sorting.
  *
- * @author Richard McKenna & _____________________
+ * @author Richard McKenna & _____John Dilag________________
  */
 public abstract class SortingHatAlgorithm
 {

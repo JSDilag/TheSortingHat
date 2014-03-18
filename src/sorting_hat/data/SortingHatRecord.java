@@ -11,7 +11,7 @@ import java.util.Iterator;
  * since originally starting the application. Note that it stores
  * stats separately for different levels.
  * 
- * @author Richard McKenna & ________________
+ * @author Richard McKenna & _______John Dilag_________
  */
 public class SortingHatRecord
 {

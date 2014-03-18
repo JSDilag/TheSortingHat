@@ -20,7 +20,7 @@ import sorting_hat.ui.SortingHatTileState;
 /**
  * This class manages the game data for The Sorting Hat.
  *
- * @author Richard McKenna
+ * @author Richard McKenna & John Dilag
  */
 public class SortingHatDataModel extends MiniGameDataModel
 {

@@ -11,7 +11,7 @@ import sorting_hat.file.SortingHatFileManager;
 
 /**
  *
- * @author Richard McKenna & _____________________
+ * @author Richard McKenna & ___John DIlag__________________
  */
 public class SortingHatEventHandler
 {

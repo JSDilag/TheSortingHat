@@ -10,9 +10,9 @@ import static sorting_hat.SortingHatConstants.*;
  * The Sorting Hat is a game application that's ready to be customized
  * to play different flavors of the game. It has been setup using art
  * from Harry Potter, but it could easily be swapped out just by changing
- * the artwork and audio files.
+ * the artwork and audio files.s
  * 
- * @author Richard McKenna & ________________________
+ * @author Richard McKenna & _________John Dilag_______________
  */
 public class TheSortingHat
 {

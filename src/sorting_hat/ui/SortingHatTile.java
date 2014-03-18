@@ -9,7 +9,7 @@ import static sorting_hat.SortingHatConstants.*;
 /**
  * This class represents a single tile in the game world.
  * 
- * @author Richard McKenna
+ * @author Richard McKenna 
  */
 public class SortingHatTile extends Sprite
 {

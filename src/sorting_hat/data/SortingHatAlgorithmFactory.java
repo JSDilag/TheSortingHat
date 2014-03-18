@@ -8,7 +8,7 @@ import sorting_hat.ui.SortingHatTile;
  * This factory class builds the sorting algorithm objects to be
  * used for sorting in the game.
  *
- * @author Richard McKenna & _____________________
+ * @author Richard McKenna & _______John Dilag______________
  */
 public class SortingHatAlgorithmFactory
 {
