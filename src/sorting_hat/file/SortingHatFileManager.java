@@ -2,7 +2,11 @@ package sorting_hat.file;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
+import java.io.BufferedOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
+import java.io.BufferedOutputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -140,7 +144,27 @@ public class SortingHatFileManager
      */
     public void saveRecord(SortingHatRecord record)
     {
-
+        SortingHatRecord recordToSave = record;
+        
+        
+        try{
+            PropertiesManager props = PropertiesManager.getPropertiesManager();
+            String recordPath = PATH_DATA + props.getProperty(SortingHatPropertyType.FILE_PLAYER_RECORD);
+            
+            File fileToClose = new File(recordPath);
+            FileOutputStream fos = new FileOutputStream(fileToClose);
+            BufferedOutputStream bos = new BufferedOutputStream(fos);
+           
+            byte[] recordInBytes = recordToSave.toByteArray();
+            
+            
+            bos.write(recordInBytes); 
+            DataOutputStream dos = new DataOutputStream(bos);
+            bos.close();
+            
+        }catch(Exception e){
+            
+        }
     }
 
     /**
@@ -189,6 +213,8 @@ public class SortingHatFileManager
                 rec.algorithm = dis.readUTF();
                 rec.gamesPlayed = dis.readInt();
                 rec.wins = dis.readInt();
+                rec.perfectWins = dis.readInt();
+                rec.fastestPerfectWin = dis.readLong();
                 recordToLoad.addSortingHatLevelRecord(levelName, rec);
             }
         }

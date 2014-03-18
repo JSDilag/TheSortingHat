@@ -35,7 +35,7 @@ import sorting_hat.data.SortingHatRecord;
  * This is the actual mini game, as extended from the mini game framework. It
  * manages all the UI elements.
  * 
- * @author Richard McKenna
+ * @author Richard McKenna & John Dilag
  */
 public class SortingHatMiniGame extends MiniGame
 {
@@ -231,7 +231,7 @@ public class SortingHatMiniGame extends MiniGame
         // PLAY THE WELCOME SCREEN SONG
         audio.play(SortingHatPropertyType.SONG_CUE_MENU_SCREEN.toString(), true); 
         audio.stop(SortingHatPropertyType.SONG_CUE_GAME_SCREEN.toString());
-        
+        audio.stop(SortingHatPropertyType.AUDIO_CUE_WIN.toString());
         
         //END GAME AS LOSS_-----------------------------!!!!
         
@@ -571,6 +571,28 @@ public class SortingHatMiniGame extends MiniGame
                  if (!button.containsPoint(data.getLastMouseX(), data.getLastMouseY()))
                 {
                     button.setState(SortingHatTileState.VISIBLE_STATE.toString());
+                }
+            }
+        }
+        
+        Iterator<SortingHatTile> tiles = ((SortingHatDataModel)data).getTilesToSort().iterator();
+        while(tiles.hasNext()){
+            SortingHatTile tile = tiles.next();
+            
+            if (tile.getState().equals(SortingHatTileState.VISIBLE_STATE.toString()))
+            {
+                if (tile.containsPoint(data.getLastMouseX(), data.getLastMouseY()))
+                {
+                    tile.setState(SortingHatTileState.MOUSE_OVER_STATE.toString());
+                    
+                }
+            }
+            // ARE WE EXITING A BUTTON?
+            else if (tile.getState().equals(SortingHatTileState.MOUSE_OVER_STATE.toString()))
+            {
+                 if (!tile.containsPoint(data.getLastMouseX(), data.getLastMouseY()))
+                {
+                    tile.setState(SortingHatTileState.VISIBLE_STATE.toString());
                 }
             }
         }

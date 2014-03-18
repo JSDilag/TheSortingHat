@@ -95,6 +95,7 @@ public class SortingHatEventHandler
         
             // UPDATE THE DATA
             SortingHatFileManager fileManager = game.getFileManager();
+            fileManager.loadRecord();
             fileManager.loadLevel(levelFile);
             data.reset(game);
 

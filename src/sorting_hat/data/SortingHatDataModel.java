@@ -476,14 +476,28 @@ public class SortingHatDataModel extends MiniGameDataModel
 
         // THIS HAS THE APPROXIMATE PATH NODES, WHICH WE'LL SLIGHTLY
         // RANDOMIZE FOR EACH TILE FOLLOWING THE PATH.
-        winPath.add(viewport.getScreenWidth() - WIN_PATH_COORD);
-        winPath.add(WIN_PATH_COORD);
-        winPath.add(WIN_PATH_COORD);
-        winPath.add(WIN_PATH_COORD);
-        winPath.add(WIN_PATH_COORD);
-        winPath.add(viewport.getScreenHeight() - WIN_PATH_COORD);
-        winPath.add(viewport.getScreenWidth() - WIN_PATH_COORD);
-        winPath.add(viewport.getScreenHeight() - WIN_PATH_COORD);
+        
+        winPath.add(210);//1
+        winPath.add(180);
+        winPath.add(430);//2
+        winPath.add(180);
+        winPath.add(610);//3
+        winPath.add(0);
+        winPath.add(780);//4
+        winPath.add(180);
+        winPath.add(1000);//5
+        winPath.add(180);
+        winPath.add(800);//6
+        winPath.add(370);
+        winPath.add(880);//7
+        winPath.add(700);
+        winPath.add(610);//8
+        winPath.add(500);
+        winPath.add(310);//9
+        winPath.add(700);
+        winPath.add(370);
+        winPath.add(400);
+        
         moveAllTilesToStack();
 
         // START THE ANIMATION FOR ALL THE TILES
